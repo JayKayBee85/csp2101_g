@@ -58,55 +58,42 @@ while true; do
 
         count=${#logs[*]}
         echo -e "There are $count files.\n"
+        read -p "Enter [1] to search all logs, or any key to search a specific log: " logsearch
 
         for file in "${logs[@]}"; do
             echo -e "$mennum $file"
             ((mennum++))
 
-            read -p "Enter [1] to search all logs, or any key to search a specific log: " logsearch
-
             if [[ $logsearch -eq 1 ]]; then
                 read "Enter the number of criteria you wish to search between 1 and 3, i.e. [1], [2], or [3] criteria: " numsearch
                 echo "You have selected $numsearch criteria"
 
-                if [[ $numsearch -eq 1 ]]; then
-                    read -p 'Enter a search term:' sterm1
-                
-                elif [[ $numsearch -eq 2 ]]; then
-                    read -p 'Enter a search term:' sterm1
-                    read -p 'Enter a search term:' sterm2
-                
-                elif [[ $numsearch -eq 3]]; then
-                    read -p 'Enter a search term:' sterm1
-                    read -p 'Enter a search term:' sterm2
-                    read -p 'Enter a search term:' sterm3
-
-                else
-                    echo "The entry you made is invalid."
-                    exit 1
-
             elif [[ $logsearch -eq 2 ]]; then
                 echo -e "\t"
-                read -p "Enter the number of the log file to search by corresponding number, i.e. [1, 2, 3, 4 or 5]" selected
+                read -p "Enter the number of the log file to search by corresponding number, i.e. [1, 2, 3, 4 or 5]: " sel
                 echo "You have selected $sel"
-                read "Enter the number of criteria you wish to search between 1 and 3, i.e. [1], [2], or [3] criteria: " numsearch
-                echo "You have selected $numsearch criteria"
 
-                if [[ $numsearch -eq 1 ]]; then
-                    read -p 'Enter a search term:' sterm1
-                
-                elif [[ $numsearch -eq 2 ]]; then
-                    read -p 'Enter a search term:' sterm1
-                    read -p 'Enter a search term:' sterm2
-                
-                elif [[ $numsearch -eq 3]]; then
-                    read -p 'Enter a search term:' sterm1
-                    read -p 'Enter a search term:' sterm2
-                    read -p 'Enter a search term:' sterm3
+            else
+                echo "The entry you made is invalid."
+                exit 1
+            fi
 
-                else
-                    echo "The entry you made is invalid."
-                    exit 1
+        read "Enter the number of criteria you wish to search between 1 and 3, i.e. [1], [2], or [3] criteria: " numsearch
+        echo "You have selected $numsearch criteria"
+
+            if [[ $numsearch -eq 1 ]]; then
+                read -p 'Enter a search term:' sterm1
+                
+            elif [[ $numsearch -eq 2 ]]; then
+                read -p 'Enter a search term:' sterm1
+                read -p 'Enter a search term:' sterm2
+                
+            elif [[ $numsearch -eq 3]]; then
+                read -p 'Enter a search term:' sterm1
+                read -p 'Enter a search term:' sterm2
+                read -p 'Enter a search term:' sterm3
+
+                
 
             else
                 echo "The entry you made is invalid."
